@@ -3,7 +3,7 @@
  * @returns The function App is returning a div with a h2 and a p tag.
  */
 
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses";
 
 function App() {
   const expenses = [
@@ -30,11 +30,7 @@ function App() {
 
   return (
     <div>
-      <h2>Let's get started!</h2>
-
-      { expenses.map((expense, index) => {
-        return <ExpenseItem title={expense.title} date = {expense.date} amount = {expense.amount}/>
-      })}
+      <Expenses items={expenses} />
     </div>
   );
 }

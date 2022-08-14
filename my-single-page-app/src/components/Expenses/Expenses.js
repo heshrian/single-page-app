@@ -9,37 +9,24 @@ const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState("2020");
 
   const selectYearHandler = (year) => {
-    console.log("Expenses.js");
+    // console.log("Expenses.js");
     setFilteredYear(year);
-    console.log(year);
+    // console.log(year);
   };
   const expensesArray = props.items;
-  // console.log(props.items[0].date.toString().slice(11,15))
   const filteredArray = expensesArray.filter(
     (filteredArray) =>
-      filteredArray.date.toString().slice(11, 15) === filteredYear  // my solution
-      // filteredArray.date.getFullYear().toString() === filteredYear  // video solution
+      filteredArray.date.toString().slice(11, 15) === filteredYear // my solution
+    // filteredArray.date.getFullYear().toString() === filteredYear  // video solution
   );
 
   return (
     <div>
       <Card className="expenses">
         <ExpensesFilter onYearSelect={selectYearHandler} value={filteredYear} />
-
-        {filteredArray.map((item) => {
-          return (
-            <ExpenseItem
-              key={item.id}
-              title={item.title}
-              date={item.date}
-              amount={item.amount}
-            />
-          );
-        })}
-        {/* <ExpensesFilter onYearSelect={selectYearHandler} value={filteredYear} />
-  
-          {props.items.map((item) => {
-            // console.log(item.date.toString().slice(11, 15) === filteredYear);
+        {filteredArray.length === 0 && <p>No expenses found</p>}
+        {filteredArray.length > 0 &&
+          filteredArray.map((item) => {
             return (
               <ExpenseItem
                 key={item.id}
@@ -48,7 +35,21 @@ const Expenses = (props) => {
                 amount={item.amount}
               />
             );
-          })} */}
+          })}
+        {/* {filteredArray.length === 0 ? (
+          <p>No expenses found</p>
+        ) : (
+          filteredArray.map((item) => {
+            return (
+              <ExpenseItem
+                key={item.id}
+                title={item.title}
+                date={item.date}
+                amount={item.amount}
+              />
+            );
+          })
+        )} */}
       </Card>
     </div>
   );

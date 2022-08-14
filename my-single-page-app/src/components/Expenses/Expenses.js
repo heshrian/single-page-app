@@ -20,11 +20,25 @@ const Expenses = (props) => {
     // filteredArray.date.getFullYear().toString() === filteredYear  // video solution
   );
 
+  let expenseContent = <p>No expenses found</p>;
+  if (filteredArray.length > 0) {
+    expenseContent = filteredArray.map((item) => {
+      return (
+        <ExpenseItem
+          key={item.id}
+          title={item.title}
+          date={item.date}
+          amount={item.amount}
+        />
+      );
+    });
+  }
+
   return (
     <div>
       <Card className="expenses">
         <ExpensesFilter onYearSelect={selectYearHandler} value={filteredYear} />
-        {filteredArray.length === 0 && <p>No expenses found</p>}
+        {/* {filteredArray.length === 0 && <p>No expenses found</p>}
         {filteredArray.length > 0 &&
           filteredArray.map((item) => {
             return (
@@ -35,21 +49,8 @@ const Expenses = (props) => {
                 amount={item.amount}
               />
             );
-          })}
-        {/* {filteredArray.length === 0 ? (
-          <p>No expenses found</p>
-        ) : (
-          filteredArray.map((item) => {
-            return (
-              <ExpenseItem
-                key={item.id}
-                title={item.title}
-                date={item.date}
-                amount={item.amount}
-              />
-            );
-          })
-        )} */}
+          })} */}
+        {expenseContent}
       </Card>
     </div>
   );

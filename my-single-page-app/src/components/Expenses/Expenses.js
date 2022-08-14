@@ -17,9 +17,9 @@ const Expenses = (props) => {
   // console.log(props.items[0].date.toString().slice(11,15))
   const filteredArray = expensesArray.filter(
     (filteredArray) =>
-      filteredArray.date.toString().slice(11, 15) === filteredYear
+      filteredArray.date.toString().slice(11, 15) === filteredYear  // my solution
+      // filteredArray.date.getFullYear().toString() === filteredYear  // video solution
   );
-  console.log(filteredArray);
 
   return (
     <div>

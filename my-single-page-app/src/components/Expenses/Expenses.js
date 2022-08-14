@@ -1,9 +1,11 @@
+import React from "react";
+import Card from "../UI/Card";
+
 import ExpenseItem from "./ExpenseItem";
-import './Expenses.css'
-import Card from "./Card";
+import "./Expenses.css";
 
 const Expenses = (props) => {
-    // const expensesArray = props.items;
+  // const expensesArray = props.items;
   return (
     <Card className="expenses">
       {props.items.map((item, index) => {

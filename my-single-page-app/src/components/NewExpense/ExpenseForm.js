@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AddNewExpense from "./AddNewExpense";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
@@ -32,9 +33,24 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    handleClick();
+    // onCancel();
   };
 
-  return (
+  const [isShown, setItShown] = useState(false);
+  const handleClick = (event) => {
+    setItShown((current) => !current);
+  };
+
+  const addNewExpense = (
+    <div>
+      <button type="submit" onClick={handleClick}>
+        Add new expense!
+      </button>
+    </div>
+  );
+
+  const formForNewExpense = (
     <form onSubmit={submitHandler}>
       <div className="new-expense__control">
         <div className="new-expense__control">
@@ -67,9 +83,17 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={handleClick}>Cancel</button>
         <button type="submit">Add new expense</button>
       </div>
     </form>
+  );
+
+  return (
+    <div>
+      {isShown && formForNewExpense}
+      {!isShown && addNewExpense}
+    </div>
   );
 };
 

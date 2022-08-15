@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
+
 const DUMMY_EXPENSES = [
   {
     id: "e1",
